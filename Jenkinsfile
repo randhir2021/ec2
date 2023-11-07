@@ -36,12 +36,12 @@ pipeline {
         success {
             emailext subject: 'Terraform Apply Successful',
                 body: 'Terraform apply was successful',
-                to: 'your-email@example.com'
+                to: 'randhir2021@gmail.com'
         }
         failure {
             emailext subject: 'Terraform Apply Failed',
                 body: 'Terraform apply failed. Please check the Jenkins logs for details.',
-                to: 'your-email@example.com'
+                to: 'randhir2021@gmail.com'
         }
     }
 }
