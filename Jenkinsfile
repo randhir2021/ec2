@@ -6,7 +6,7 @@ pipeline {
         stage('Terraform Init') {
             steps {
                 script {
-                    dir("${env.Workspace}/ec2/modules/ec2-instance/") {
+                    dir("${env.Workspace}/ec2/") {
                         sh 'pwd'
                         sh 'terraform init'
                     }
