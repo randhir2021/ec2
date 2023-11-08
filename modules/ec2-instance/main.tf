@@ -26,7 +26,7 @@ resource "aws_instance" "example" {
   count                = var.instance_count
   ami                  = data.aws_ami.example.id
   instance_type        = var.instance_type
-  availability_zone    = "us-west-2a"
+  availability_zone    = "us-east-1a"
   # security_groups      = ["launch-wizard-2"]
   iam_instance_profile = aws_iam_instance_profile.test_profile.name
   tags = {
