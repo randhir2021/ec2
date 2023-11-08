@@ -1,5 +1,5 @@
 provider "aws" {
-  region  = "us-west-2"
+  region  = "us-east-1"
 }
 
 data "aws_ami" "example" {
@@ -27,7 +27,7 @@ resource "aws_instance" "example" {
   ami                  = data.aws_ami.example.id
   instance_type        = var.instance_type
   availability_zone    = "us-west-2a"
-  security_groups      = ["launch-wizard-2"]
+  # security_groups      = ["launch-wizard-2"]
   iam_instance_profile = aws_iam_instance_profile.test_profile.name
   tags = {
     Name         = "Webserver${var.environment}"
@@ -48,7 +48,7 @@ resource "aws_instance" "example" {
 }
 
 resource "aws_iam_role" "test_role" {
-  name = "test_role_terraform${var.environment}"
+  name = "ec2_role_terraform${var.environment}"
 
   # Terraform's "jsonencode" function converts a
   # Terraform expression result to valid JSON syntax.
@@ -72,7 +72,7 @@ resource "aws_iam_role" "test_role" {
 }
 
 resource "aws_iam_instance_profile" "test_profile" {
-  name = "test_profile${var.environment}"
+  name = "ec2_profile${var.environment}"
   role = aws_iam_role.test_role.name
   depends_on = [
     aws_iam_role.test_role
